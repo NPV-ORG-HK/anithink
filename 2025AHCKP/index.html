@@ -384,9 +384,9 @@ s.setAttribute('data-goatcounter','https://'+GC+'.goatcounter.com/count');
 document.head.appendChild(s);
 function load(){
 fetch('https://'+GC+'.goatcounter.com/counter/'+encodeURIComponent(PATH)+'.json')
-.then(function(r){if(r.status===404)return {count:'0'};if(!r.ok)throw 0;return r.json();})
+.then(function(r){if(r.status===404)return {count:'0'};if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
 .then(function(d){if(d&&d.count!==undefined){out.textContent=d.count;rows.forEach(function(e){e.hidden=false;});}})
-.catch(function(){});
+.catch(function(e){console.warn('GoatCounter counter failed:',e);if(/debug/.test(location.search)){out.textContent='載入失敗：'+(e&&e.message||e);rows.forEach(function(x){x.hidden=false;});}});
 }
 load();
 var btn=document.querySelector('.rc .btn');
