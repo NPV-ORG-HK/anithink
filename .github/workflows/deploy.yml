@@ -32,6 +32,7 @@ jobs:
             cp 2025AHCKP/index.html "_site/2025AHCKP/$s/index.html"
           done
           if [ -d 2025AHCKP/files ]; then cp -r 2025AHCKP/files _site/2025AHCKP/files; fi
+          if [ -d 2025AHCKP/report ]; then cp -r 2025AHCKP/report _site/2025AHCKP/report; fi
           cp index.html _site/index.html
 
       - uses: actions/configure-pages@v5
