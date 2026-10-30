@@ -376,6 +376,7 @@ window.addEventListener('load',function(){init();setTimeout(init,400);});
 (function(){
 var GC='ahckp2025';
 var PATH='/2025AHCKP/report';
+var SHOW=false; /* set to true to show the report view count row */
 if(!GC)return;
 var rows=document.querySelectorAll('.vc'),out=document.getElementById('vcount');
 var s=document.createElement('script');
@@ -396,10 +397,10 @@ fail('HTTP '+x.status+' '+t.slice(0,60));
 x.onerror=function(){fail('network');};
 x.send();
 }
-load();
+if(SHOW)load();
 var btn=document.querySelector('.rc .btn');
 if(btn)btn.addEventListener('click',function(){
-setTimeout(load,4000);
+if(SHOW)setTimeout(load,4000);
 });
 })();
 </script>
